@@ -18,7 +18,7 @@ export const getAllPosts = () =>
 export const remove = (post) =>
   fetch(`${api}/posts/${post.id}`, { method: 'DELETE', headers })
     .then(res => res.json())
-    .then(data => data.contact)
+    .then(data => data)
 
 export const create = (body) =>
   fetch(`${api}/posts`, {
