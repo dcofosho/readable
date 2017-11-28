@@ -1,4 +1,4 @@
-import {NEW_POST} from '../actions/index.js'
+import {NEW_POST, EDIT_POST} from '../actions/index.js'
 import * as readableApi from '../utils/api-tool.js'
 import makeid from '../utils/makeId.js'
 
@@ -22,6 +22,24 @@ function posts(state={}, action){
 				...state,
 				posts: {...state.posts,
 						[newId]: newPost}
+			}
+		case(EDIT_POST):
+			const id = action.id
+			const editedPost = {
+				id: id,
+				timestamp: state.posts.id.timestamp,
+				title: state.posts.id.title,
+				body: action.body,
+				author: state.posts.id.author,
+				category: state.posts.id.category,
+				voteScore: state.posts.id.voteScore,
+				deleted: state.posts.id.deleted,
+				commentCount: state.posts.id.commentCount
+			}
+			return{
+				...state,
+				posts: {...state.posts,
+						[id]: editedPost}
 			}
 		default:
 			return state

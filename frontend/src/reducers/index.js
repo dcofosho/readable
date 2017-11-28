@@ -1,5 +1,5 @@
-import posts from './newPost.js'
-import comments from './newComment.js'
+import posts from './post.js'
+import comments from './comment.js'
 import { combineReducers } from 'redux'
 
 export default combineReducers({
