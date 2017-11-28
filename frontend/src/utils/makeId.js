@@ -8,4 +8,6 @@ function makeid() {
   return text;
 }
 
-console.log(makeid());
+console.log('NEW ID',makeid());
+
+export default makeid

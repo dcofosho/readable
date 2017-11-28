@@ -9,3 +9,14 @@ export function newPost({title, body, author, category}){
 		category,
 	}
 }
+
+export const NEW_COMMENT = 'NEW COMMENT'
+
+export function newComment({parentId, body, author}){
+	return{
+		type: NEW_COMMENT,
+		parentId,
+		body,
+		author,
+	}
+}
