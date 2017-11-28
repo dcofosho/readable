@@ -8,21 +8,31 @@ class App extends Component {
   
   render() {
     console.log('Props',this.props)
-    const id1 = Object.keys(this.props.posts.posts)[0]
-    console.log("ID1", id1)
-    console.log("Post", this.props.posts.posts[id1])
-    const post = this.props.posts.posts[id1]
+    
+    //console.log("Post", this.props.posts.posts[id1])
     return (
       <div className="App">
-        {post.body}
+      <ul className="Posts">
+        {
+          this.props.posts.map((post)=>
+            <li className="Post">{post.body}</li>
+          )
+        }
+      </ul>
       </div>
     );
   }
 }
 
 function mapStateToProps({posts, comments}){
+  const keys = Object.keys(posts.posts)
+  console.log("KEYS", keys)
+  //console.log("Post", this.props.posts.posts[id1])
+  const postObj = posts.posts
+  console.log("POSTS", posts)
+  let post_array = keys.map((key)=>postObj[key])
   return{
-    posts,
+    posts: post_array,
     comments
   }
 }
