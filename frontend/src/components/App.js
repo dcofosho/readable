@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import '../styles/App.css';
 import * as readableApi from '../utils/api-tool.js'
 import {newPost, editPost, newComment} from '../actions/index.js'
+import { Link } from "react-router-dom";
 
 class App extends Component {
   
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div className="App">
       <ul className="Posts">
+      <Link to="/newPost">New Post</Link>
         {
           this.props.posts.map((post)=>
             <li className="Post">{post.body}</li>

@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
+import NewPost from './components/NewPost';
 import { createStore } from 'redux'
 import reducer from './reducers'
 import * as actions from './actions/index.js'
@@ -27,6 +30,11 @@ console.log('NEWSTATE',store.getState())
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+	<BrowserRouter>
+		<div>
+		<Route path = "/" exact render= {()=> <App />}/>
+		<Route path = "/newPost" exact render= {()=> <NewPost />}/>
+		</div>
+	</BrowserRouter>
 	</Provider>, document.getElementById('root'));
 registerServiceWorker();
