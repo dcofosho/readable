@@ -9,15 +9,13 @@ class App extends Component {
   
   render() {
     console.log('Props',this.props)
-    
-    //console.log("Post", this.props.posts.posts[id1])
     return (
       <div className="App">
       <ul className="Posts">
       <Link to="/newPost">New Post</Link>
         {
           this.props.posts.map((post)=>
-            <li className="Post">{post.body}</li>
+            <li className="Post" key={post.id}>{post.body}</li>
           )
         }
       </ul>

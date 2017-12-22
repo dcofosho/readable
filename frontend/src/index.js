@@ -19,7 +19,7 @@ const store = createStore(
 	window.__REDUX_DEVTOOLS__EXTENSION__ && window.__REDUX__DEVTOOLS__EXTENSION__()
 )
 
-console.log('STATE',store.getState())
+console.log('STATE', store.getState())
 
 store.dispatch(actions.newPost({title: "My first post", 
 								body: "test 123", 

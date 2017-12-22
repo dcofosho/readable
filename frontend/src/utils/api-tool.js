@@ -1,5 +1,5 @@
+import * as actions from '../actions/index.js'
 const api = 'http://localhost:3001'
-
 let token = localStorage.token
 
 if (!token)
@@ -20,12 +20,24 @@ export const remove = (post) =>
     .then(res => res.json())
     .then(data => data)
 
-export const create = (body) =>
-  fetch(`${api}/posts`, {
-    method: 'POST',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  }).then(res => res.json())
+export const createPost = (post, postFunction) => {
+    fetch("http://localhost:3001/posts/",
+    {method: "POST", body: JSON.stringify(post), headers})
+    .then((resp) => {
+      resp.json().then((data) => {
+        // console.log(data, this);
+        var obj = {
+          id: data.id,
+          timestamp: data.timestamp,
+          title: data.title,
+          body: data.body,
+          author: data.author,
+          category: data.category,
+          deleted: data.deleted,
+          voteScore: data.voteScore
+        }
+        postFunction(obj);
+        window.location.href = "/";
+      })
+    })
+}
